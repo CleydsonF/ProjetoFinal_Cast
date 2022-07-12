@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Cleydson Fernando\\Desktop\\ManterCursos-main\\ManterCursosAPI\\ManterCursosAPI\\ManterCursosAPI.csproj": {}
+    "C:\\Users\\User\\Desktop\\tedte\\ProjetoFinal_Cast\\ManterCursosAPI\\ManterCursosAPI\\ManterCursosAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Cleydson Fernando\\Desktop\\ManterCursos-main\\ManterCursosAPI\\ManterCursosAPI\\ManterCursosAPI.csproj": {
+    "C:\\Users\\User\\Desktop\\tedte\\ProjetoFinal_Cast\\ManterCursosAPI\\ManterCursosAPI\\ManterCursosAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Cleydson Fernando\\Desktop\\ManterCursos-main\\ManterCursosAPI\\ManterCursosAPI\\ManterCursosAPI.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\tedte\\ProjetoFinal_Cast\\ManterCursosAPI\\ManterCursosAPI\\ManterCursosAPI.csproj",
         "projectName": "ManterCursosAPI",
-        "projectPath": "C:\\Users\\Cleydson Fernando\\Desktop\\ManterCursos-main\\ManterCursosAPI\\ManterCursosAPI\\ManterCursosAPI.csproj",
-        "packagesPath": "C:\\Users\\Cleydson Fernando\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Cleydson Fernando\\Desktop\\ManterCursos-main\\ManterCursosAPI\\ManterCursosAPI\\obj\\",
+        "projectPath": "C:\\Users\\User\\Desktop\\tedte\\ProjetoFinal_Cast\\ManterCursosAPI\\ManterCursosAPI\\ManterCursosAPI.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\tedte\\ProjetoFinal_Cast\\ManterCursosAPI\\ManterCursosAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Cleydson Fernando\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
