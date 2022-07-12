@@ -27,6 +27,7 @@ export class CadastroCursosComponent implements OnInit {
   public dataAtual = new Date().toISOString();
   public dataCerta = this.dataAtual.split('T');
 
+
   /* Filtros */
   public date: string = '';
 
@@ -83,19 +84,6 @@ export class CadastroCursosComponent implements OnInit {
     this.categoria.formData = Object.assign({}, selectedRecord);
   }
 
-  onDelete(id: number) {
-    if (confirm('Você tem certeza que deseja deletar este curso?')) {
-      this.curso.deleteCurso(id)
-        .subscribe(
-          res => {
-            this.curso.refreshList();
-            this.toastr.error("Deletado com Sucesso", 'Registro de Cursos');
-          },
-          err => { console.log(err) }
-        )
-    }
-  }
-
   resetForm(form: NgForm) {
     form.form.reset();
     this.curso.formData = new Curso();
@@ -149,6 +137,19 @@ export class CadastroCursosComponent implements OnInit {
     this.nomeCate = this.getCategoria(this.cat).nome;
   }
 
+  ValidarExclusao(cursoID: number){
+    this.excluir = cursoID;
+  }
+
+  Delete(cursoID: number) {
+    this.curso.deleteCurso(cursoID).subscribe({
+      next:(res) => {
+        this.curso.refreshList();
+        this.toastr.error("Curso deletado com Sucesso", 'Excluido');
+      },
+      error: err => { console.log(err) }
+    })
+  }
 
 
 }

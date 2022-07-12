@@ -98,8 +98,46 @@
           <td (click)="populateForm(cursos)">{{cursos.quantidadeAlunos}}</td>
           <td (click)="populateForm(cursos)">{{getCategoria(cursos.categoriaID).nome}}</td>
           <td class="buttons">
-            <button class="btn btn-warning" data-bs-toggle="modal"  data-bs-target="#exampleModal" (click)="populateForm(cursos)"><i class="fas fa-edit"></i> Editar</button>
-            <button class="btn btn-danger" *ngIf="dataCerta < cursos.datatermino.toString()" (click)="onDelete(cursos.cursoID)"><i class="fas fa-trash-alt"></i> Deletar</button>
+            <button  class="btn btn-warning" data-bs-toggle="modal"  data-bs-target="#exampleModal" (click)="populateForm(cursos)"><i class="fas fa-edit"></i> Editar</button>
+            <button data-bs-toggle="modal" data-bs-target="#modalExclusao" class="btn btn-danger" *ngIf="dataCerta < cursos.datatermino.toString()" (click)="ValidarExclusao(cursos.cursoID)"><i class="fas fa-trash-alt"></i> Deletar</button>
           </td>
     </tbody>
 </table>
+
+
+
+<!-- Modal Confirmar Exclusão Curso-->
+<div class="modal fade" tabindex="-1" id="modalExclusao">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Exclusão</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Tem certeza que deseja realizar a exclusão do curso?</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"        >
+          Não
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="Delete(excluir)"
+          data-bs-dismiss="modal"
+        >
+          Excluir
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

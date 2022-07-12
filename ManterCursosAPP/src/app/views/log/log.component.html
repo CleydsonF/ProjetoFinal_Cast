@@ -1,4 +1,4 @@
-<h1 class="text-center">Historico de Registros</h1>
+<h1 class="text-center">Histórico de Registros</h1>
 <br>
 <table class="table table-striped">
   <thead class="thead-dark">
@@ -17,7 +17,7 @@
           <td (click)="populateForm(logs)">{{logs.acao}}</td>
           <td (click)="populateForm(logs)">{{getUsuario(logs.usuarioID).nomeUsuario}}</td>
           <td class="buttons">
-            <button class="btn btn-danger" (click)="onDelete(logs.logID)"><i class="fas fa-trash-alt"></i> Deletar</button>
+            <button data-bs-toggle="modal" data-bs-target="#modalExclusao" class="btn btn-danger" (click)="ValidarExclusao(logs.logID)"><i class="fas fa-trash-alt"></i> Deletar</button>
           </td>
         </tr>
     </tbody>
@@ -29,3 +29,41 @@
     </tr>
   </tfoot>
 </table>
+
+
+
+<!-- Modal Confirmar Exclusão Curso-->
+<div class="modal fade" tabindex="-1" id="modalExclusao">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Exclusão</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Tem certeza que deseja realizar a exclusão do registro?</p>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"        >
+          Não
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="Delete(excluir)"
+          data-bs-dismiss="modal"
+        >
+          Excluir
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
