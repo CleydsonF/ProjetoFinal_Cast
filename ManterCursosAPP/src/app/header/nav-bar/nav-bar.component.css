@@ -1,0 +1,20 @@
+.nave:hover {
+  background-color: #dbd6e6;
+  border-radius: 10px;
+  transition: .5s;
+}
+
+.menu-lateral {
+  margin-top: 0px;
+  width: 0px;
+}
+
+@media screen and (max-width: 1300px){
+  .menu-lateral{
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1000px){
+
+}

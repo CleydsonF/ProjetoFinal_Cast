@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #EEEEEE;
+}
+
+.col-md.app-container{
+  margin-top: 50px;
+  margin-left: -42px;
+  padding-top: 15px;
+  width: 1040px;
+}
+
+.container-fluid{
+  width: 1040px;
+}
+
+@media screen and (max-width: 1350px){
+  .col-md.app-container{
+    margin-top: 50px;
+    margin-left: initial;
+    padding-top: 15px;
+  }
+
+  .col-md-3{
+    display: none;
+  }
+
+  .container-fluid{
+    width: 100vw;
+  }
+}
+
+@media screen and (min-width: 1000px){
+
+}

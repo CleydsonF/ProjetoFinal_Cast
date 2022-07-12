@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "caff6d65-9ff2-456d-b672-c3cc0e0c3703": {
+      "ProjectGuid": "caff6d65-9ff2-456d-b672-c3cc0e0c3703",
+      "DisplayName": "ManterCursosAPI",
+      "ColorIndex": 0
+    },
+    "d4ab5f14-0eb7-4387-830e-5742c065e57b": {
+      "ProjectGuid": "d4ab5f14-0eb7-4387-830e-5742c065e57b",
+      "DisplayName": "ManterCursosAPI",
+      "ColorIndex": 1
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Arquivos Diversos",
+      "ColorIndex": -1
+    }
+  },
+  "NextColorIndex": 2
+}

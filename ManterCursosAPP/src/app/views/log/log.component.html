@@ -1,0 +1,31 @@
+<h1 class="text-center">Historico de Registros</h1>
+<br>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th>Curso</th>
+      <th>Data</th>
+      <th>Ação</th>
+      <th>Usuário Responsável</th>
+      <th></th>
+    </tr>
+  </thead>
+    <tbody *ngFor="let logs of log.listLog">
+        <tr>
+          <td (click)="populateForm(logs)">{{logs.curso}}</td>
+          <td (click)="populateForm(logs)">{{logs.ultimaAtualizacao | date: 'dd/MM/yyyy'}}</td>
+          <td (click)="populateForm(logs)">{{logs.acao}}</td>
+          <td (click)="populateForm(logs)">{{getUsuario(logs.usuarioID).nomeUsuario}}</td>
+          <td class="buttons">
+            <button class="btn btn-danger" (click)="onDelete(logs.logID)"><i class="fas fa-trash-alt"></i> Deletar</button>
+          </td>
+        </tr>
+    </tbody>
+  <tfoot >
+    <tr *ngIf="log.listLog == null">
+      <td colspan="8">
+        <h4>Nenhum historico disponível</h4>
+      </td>
+    </tr>
+  </tfoot>
+</table>

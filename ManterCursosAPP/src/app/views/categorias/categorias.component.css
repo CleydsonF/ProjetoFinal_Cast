@@ -1,0 +1,30 @@
+thead {
+  background-color: black;
+  color: white;
+}
+
+table {
+  margin-top: 50px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: end;
+}
+
+button {
+  margin-right: 5px;
+}
+
+.img-cate {
+  border: 1px solid black;
+  display:flex;
+  justify-content: center;
+  height: 200px;
+  align-items: center;
+}
+
+.detalhes-cate {
+  margin-top: 10px;
+  padding: 10px;
+}

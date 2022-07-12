@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+        font-family: 'Helvetica Neue', Helvetica, Arial, 'sans-serif';
+        font-size: 14px;
+}
+
+body a {
+    text-decoration: none;
+}
+
+/* menu */
+
+.menu a {
+    text-decoration: none;
+    color: #9DAA9D;
+}
+
+.menu a:hover {
+    color: white;
+}
+
+.navbar {
+    color: white;
+}
+
+.row.primeriro-menu {
+    border-bottom: 1px solid #9DAA9D;
+    color: #9DAA9D;
+}
+
+
+.menu {
+    margin: auto;
+    height: 120px;
+    background: linear-gradient(rgba(0, 0, 0, .6),rgba(0,0,0,.6)100%);
+}
+
+.primeriro-menu {
+    color: #9DAA9D;
+    display: flex;
+    align-items: center;
+}
+
+.menus {
+    width: auto;
+    word-spacing: 10px;
+}
+
+.entre-contato {
+    margin-right: 5px;
+    padding-top: 5px;
+    font-size: 12px;
+    float: left;
+    width: 100px;
+    border-right: 1px solid #9DAA9D;
+    height: 30px;
+}
+
+/* Fim Menu */
+
+/* Cards */
+
+#cardRow {
+    justify-content: center;
+    margin: auto;
+    background-color: yellow;
+}
+
+.cards {
+    z-index: 1000;
+    width: 1170px;
+    height: auto;
+    background-color: #000000;
+}
+
+
+
+.card :hover {
+    border-radius: 10px;
+    color: #fff;
+    transition: linear 0.2s;
+    background: linear-gradient(rgba(53, 53, 53, .6),rgba(53, 53, 53, .6)100%);
+}
+
+/* Fim cards */
+
+/* corpo */
+
+.corpo {
+ 
+    background-color: white;
+}
+
+
+.row.container h2 {
+    width: 1140px;
+}
+
+strong {
+    font-size: 22px;
+}
+
+.texto {
+    font-size:  32px;
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: center;
+}
+
+.box-filme {
+    width: auto;
+    height: auto;
+}
+
+.box-filme:hover {
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+#btnsolu {
+    border: 1px solid white;
+    text-decoration: none;
+    color: white;
+}
+
+#btnsolu:hover {
+    background-color: white;
+    color: black;
+}
+
+#btnsap {
+    padding: auto;
+    align-items: center;
+    width: 1140px;
+    height: 92px;
+}
+
+#atualizacoesCast {
+    margin-top: 1px;
+    height: 478px;
+    background-image: url("/img/banner-form-home.jpg");
+}
+
+#atuaCol1 {
+    margin-left: 90px;
+    margin-top: 100px;
+    height: auto;
+    color: white;
+}
+
+#atuaCol2 {
+    margin-top: 2px;
+    margin-left: 90px;
+    background-color: yellow;
+    height: 100px;
+}
+
+#linhaAtu {
+    background-color: white;
+    width: 150px;
+    height: 5px;
+}
