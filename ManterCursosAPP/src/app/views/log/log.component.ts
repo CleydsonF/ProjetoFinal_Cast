@@ -11,6 +11,7 @@ import { Curso } from 'src/app/shared/cadatro-curso.model';
   styleUrls: ['./log.component.css']
 })
 export class LogComponent implements OnInit {
+  public excluir!: number;
 
   constructor(public log: CadastroCursosService, private toastr: ToastrService) { }
 
@@ -22,18 +23,6 @@ export class LogComponent implements OnInit {
     this.log.formDataLog = Object.assign({}, selectedRecord);
   }
 
-  onDelete(id: number) {
-    if (confirm('Você tem certeza que deseja deletar este registro?')) {
-      this.log.deleteLog(id)
-        .subscribe(
-          res => {
-            this.log.refreshList();
-            this.toastr.error("Deletado com Sucesso", 'Registro de Logs');
-          },
-          err => { console.log(err) }
-        )
-    }
-  }
 
   getUsuario(idUsuario: number): Usuario{
     return this.log.listUsuario.find(usu => usu.usuarioID == idUsuario)!;
@@ -41,5 +30,19 @@ export class LogComponent implements OnInit {
 
   getCurso(idCurso: number): Curso {
     return this.log.list.find(curso => curso.cursoID == idCurso)!;
+  }
+
+  ValidarExclusao(cursoID: number){
+    this.excluir = cursoID;
+  }
+
+  Delete(logID: number) {
+    this.log.deleteLog(logID).subscribe({
+      next:(res) => {
+        this.log.refreshList();
+        this.toastr.error("Curso deletado com Sucesso", 'Excluido');
+      },
+      error: err => { console.log(err) }
+    })
   }
 }
