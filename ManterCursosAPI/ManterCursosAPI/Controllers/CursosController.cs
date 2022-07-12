@@ -37,7 +37,7 @@ namespace ManterCursosAPI.Controllers
 
             if (curso == null)
             {
-                return NotFound();
+                return NotFound($"Curso não encontrado com o ID informado ({id}).");
             }
 
             return curso;
@@ -58,32 +58,33 @@ namespace ManterCursosAPI.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+
+
+
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CursoExists(id))
+                if (!CursoExiste(id))
                 {
-                    return NotFound();
+                    return NotFound(0);
                 }
                 else
                 {
                     throw;
-                }
+                }  
             }
+             Log log = new Log
+               {
+                 DataInclusao = DateTime.Now,
+                 UltimaAtualizacao = DateTime.Now,
+                 Acao = "Curso Atualizado",
+                 UsuarioID = 1,
+                 Curso = curso.DescricaoCurso
+             };
+              _context.Logs.Add(log);
+               await _context.SaveChangesAsync();
 
-            Log log = new Log
-            {
-                DataInclusao = DateTime.Now,
-                UltimaAtualizacao = DateTime.Now,
-                Acao = "Curso Atualizado",
-                UsuarioID = 1,
-                Curso = curso.DescricaoCurso
-            };
-
-            _context.Logs.Add(log);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+              return NoContent(); 
         }
 
         // POST: api/Cursos
@@ -93,13 +94,31 @@ namespace ManterCursosAPI.Controllers
         {
             try
             {
-               Boolean existeCursoMesmoPreiodo = ( _context.Cursos.Any( c => c.DataInicio <= curso.Datatermino && c.Datatermino >= curso.DataInicio || c.DataInicio == curso.DataInicio && c.Datatermino == curso.Datatermino));
+                if (curso.DataInicio.Date < DateTime.Now.Date)
+                {
+                    return BadRequest(new { mensagem = "A data de início não pode ser anterior à data de hoje" });
+                }
 
-                if(existeCursoMesmoPreiodo == true){
+                if (curso.Datatermino.Date < curso.DataInicio.Date)
+                {
+                    return BadRequest(new { mensagem = "A data de término não pode ser anterior à data de início" });
+                }
 
-                     return BadRequest(new {mensagem = "Existe(m) curso(s) planejados(s) dentro do período informado."});
+                Boolean existeCursoMesmoPreiodo = (_context.Cursos.Any(c => c.DataInicio <= curso.DataInicio && c.Datatermino >= curso.DataInicio || c.DataInicio == curso.DataInicio && c.Datatermino == curso.Datatermino));
 
-                }else
+                if (existeCursoMesmoPreiodo == true)
+                {
+
+                    return BadRequest(new { mensagem = "Existe(m) curso(s) planejados(s) dentro do período informado." });
+
+                }
+                Curso duplicate = VeficarDuplicidade(curso);
+
+                if (duplicate != default && duplicate.CursoID != 0)
+                {
+                    return BadRequest(new { message = "Curso já cadastrado." });
+                }
+                else
                 {
                     _context.Cursos.Add(curso);
                     await _context.SaveChangesAsync();
@@ -111,17 +130,18 @@ namespace ManterCursosAPI.Controllers
                         UsuarioID = 1,
                         Curso = curso.DescricaoCurso
                     };
-
                     _context.Logs.Add(log);
                     await _context.SaveChangesAsync();
 
-                    return CreatedAtAction("GetCurso", new { id = curso.CursoID }, curso);
+                    return Ok(new { mensagem = "Dados gravados com sucesso!!" });
+
                 }
             }
             catch (Exception ex)
             {
-                return BadRequest(new { erro = ex.Message, Caminho = ex.StackTrace, IDCategoria = curso.CategoriaID });
+                return BadRequest(new { message = "Ocorreu um erro inesperado.", error = ex.Message, stackTrace = ex.StackTrace });
             }
+
         }
 
         // DELETE: api/Cursos/5
@@ -133,6 +153,11 @@ namespace ManterCursosAPI.Controllers
             if (curso == null)
             {
                 return NotFound();
+            }
+
+            if (curso.Datatermino <= DateTime.Now)
+            {
+                return BadRequest("Este curso já foi realizado, ou está em andamento, portanto não pode ser excluído!");
             }
 
             _context.Cursos.Remove(curso);
@@ -152,9 +177,18 @@ namespace ManterCursosAPI.Controllers
             return NoContent();
         }
 
-        private bool CursoExists(int id)
+        Curso VeficarDuplicidade(Curso curso)
+        {
+            Curso duplicatedCourse = _context.Cursos.Where(c =>
+              (c.DescricaoCurso.ToLower() == curso.DescricaoCurso.ToLower())
+              && c.DescricaoCurso != curso.DescricaoCurso).FirstOrDefault();
+
+            return curso;
+        }
+        private bool CursoExiste(int id)
         {
             return _context.Cursos.Any(e => e.CursoID == id);
         }
     }
+
 }
