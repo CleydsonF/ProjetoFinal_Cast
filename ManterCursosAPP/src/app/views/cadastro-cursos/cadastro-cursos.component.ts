@@ -9,6 +9,7 @@ import { CadastroCursosService } from '../../shared/cadastro-cursos.service';
 import { CategoriaService } from '../../shared/categoria.service';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-cadastro-cursos',
   templateUrl: './cadastro-cursos.component.html',
@@ -17,24 +18,27 @@ import { NgForm } from '@angular/forms';
 
 export class CadastroCursosComponent implements OnInit {
 
-  public descricao: string = '';
-  public datainicio: string = '';
-  public dataTermino: string = '';
-  public quantidadeAlunos: number = 0;
-  public cat: number = 0;
-  public nomeCate: any = '';
-  public excluir!: number;
-  public dataAtual = new Date().toISOString();
-  public dataCerta = this.dataAtual.split('T');
+ descricao: string = '';
+ datainicio: string = '';
+ dataTermino: string = '';
+ quantidadeAlunos: number = 0;
+ cat: number = 0;
+ nomeCate: any = '';
+ excluir!: number;
+ dataAtual = new Date().toISOString();
+ dataCerta = this.dataAtual.split('T');
 
 
   /* Filtros */
-  public date: string = '';
+ date: string = '';
+ dataFiltroInicio: string = '';
+ dataFiltroTerminio: string = '';
+ filtrosPorDatas: string = '';
 
   /* Form Log */
-  public dataInclusao: string = '';
-  public acao: string = '';
-  public usuario: string = '';
+ dataInclusao: string = '';
+ acao: string = '';
+ usuario: string = '';
 
   mostrarMenu: boolean = false;
 
@@ -61,14 +65,15 @@ export class CadastroCursosComponent implements OnInit {
       if (this.curso.formData.dataInicio.toString() < this.dataCerta[0].toString() || this.curso.formData.datatermino.toString() < this.dataCerta[0].toString()) {
         this.toastr.error("A DATA DE INICIO não pode ser menor que a data atual!!!");
       } else{
-        if(this.curso.list.some(c => (c.descricaoCurso == descr) && (c.dataInicio == dtaIni) && (c.datatermino = dtaTer) && (c.categoriaID == cate) && (c.quantidadeAlunos == qtd)))
+        if(this.curso.list.some(c => (c.descricaoCurso == descr) ))
         {
           this.toastr.error("Curso já cadastrado!!");
         }else
         {
           if (this.curso.formData.datatermino.toString() < this.curso.formData.dataInicio.toString()) {
             this.toastr.error("A DATA DE TERMINO não pode ser menor que a DATA DE INICIO!!!");
-          }else{
+          }
+          else{
             this.onSubmitt(form);
           }
         }
@@ -124,6 +129,7 @@ export class CadastroCursosComponent implements OnInit {
     );
   }
 
+
   getCategoria(idCategoria: number): Categoria{
     return this.categoria.list.find(cat => cat.categoriaID == idCategoria)!;
   }
@@ -142,7 +148,7 @@ export class CadastroCursosComponent implements OnInit {
   }
 
   Delete(cursoID: number) {
-    this.curso.deleteCurso(cursoID).subscribe({
+       this.curso.deleteCurso(cursoID).subscribe({
       next:(res) => {
         this.curso.refreshList();
         this.toastr.error("Curso deletado com Sucesso", 'Excluido');
@@ -153,3 +159,7 @@ export class CadastroCursosComponent implements OnInit {
 
 
 }
+
+// if(this.curso.formData.datatermino.toString() <= this.dataCerta[0].toString()){
+//   this.toastr.error("Este curso já foi realizado, ou está em andamento, portanto não pode ser excluído!!!");
+// }

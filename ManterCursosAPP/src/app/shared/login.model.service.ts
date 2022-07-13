@@ -23,36 +23,6 @@ export class LoginModelService {
       this.router.navigate(['/cursos'])
     }
 
-   /* this.usuario.listUsuario.find(u => {
-     if(u.nomeUsuario){
-       alert("wqeqw")
-      }
-       else{
-         alert("dskfk")
-       }
-
-   }) */
-
-   /* this.usuario.listUsuario?.forEach(c => {
-      if(c.nomeUsuario == "admin" && c.senha == "123"){
-        this.adminAutenticado = c;
-        alert("Logado")
-      }
-    });
-    if(this.adminAutenticado != null){
-      localStorage.setItem('adminAutenticado',JSON.stringify(this.adminAutenticado))
-    }else{
-      console.log("usuario "+ this.usuario.formDataUsuario.email +" senha: " + this.usuario.formDataUsuario.senha)
-      alert("Deu Erro")
-    } */
-
-    /* if(this.usuario.listUsuario.some(u => u.nomeUsuario == "admin")){
-        this.toastr.success("Logado")
-    }
-    else
-    {
-      this.toastr.error("nao é igual")
-    } */
 }
 
 
