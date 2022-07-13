@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +42,8 @@ import { LoginFormComponent } from './views/login/login-form/login-form.componen
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     FormsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
