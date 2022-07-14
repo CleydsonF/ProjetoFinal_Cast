@@ -18,7 +18,6 @@ export class CadastroCursosService {
   list : Curso[];
   listLog : Log[];
   listUsuario : Usuario[];
-
   public buscar: string = '';
 
   constructor(private http: HttpClient) { }

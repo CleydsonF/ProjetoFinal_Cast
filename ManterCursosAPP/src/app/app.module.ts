@@ -17,7 +17,7 @@ import { CategoriasComponent } from './views/categorias/categorias.component';
 import { LogComponent } from './views/log/log.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { LoginComponent } from './views/login/login.component';
-import { TesteHomeComponent } from './teste-home/teste-home.component';
+import { TesteHomeComponent } from './header/teste-home/teste-home.component';
 import { AquiComponent } from './header/aqui/aqui.component';
 import { LoginFormComponent } from './views/login/login-form/login-form.component';
 
