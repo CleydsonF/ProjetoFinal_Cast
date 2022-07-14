@@ -65,7 +65,7 @@ export class CadastroCursosComponent implements OnInit {
       if (this.curso.formData.dataInicio.toString() < this.dataCerta[0].toString() || this.curso.formData.datatermino.toString() < this.dataCerta[0].toString()) {
         this.toastr.error("A DATA DE INICIO não pode ser menor que a data atual!!!");
       } else{
-        if(this.curso.list.some(c => (c.descricaoCurso == descr) ))
+        if(this.curso.list.some(c => (c.descricaoCurso == descr) && (c.dataInicio == dtaIni) && (c.datatermino == dtaTer) && (c.categoriaID == cate) && (c.quantidadeAlunos == this.quantidadeAlunos)))
         {
           this.toastr.error("Curso já cadastrado!!");
         }else
@@ -125,7 +125,8 @@ export class CadastroCursosComponent implements OnInit {
         this.curso.refreshList();
         this.toastr.success('Atualização Feita com Sucesso', 'Registro de Cursos')
       },
-      err => { console.log(err); }
+      err => { console.log(err);
+        this.toastr.error("Existe(m) curso(s) planejados(s) dentro do período informado."); }
     );
   }
 
@@ -160,6 +161,3 @@ export class CadastroCursosComponent implements OnInit {
 
 }
 
-// if(this.curso.formData.datatermino.toString() <= this.dataCerta[0].toString()){
-//   this.toastr.error("Este curso já foi realizado, ou está em andamento, portanto não pode ser excluído!!!");
-// }
